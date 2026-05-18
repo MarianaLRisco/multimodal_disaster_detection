@@ -6,13 +6,13 @@ dataset: src/config/datasets/crisismmd.yaml
 
 model_config: src/config/models/text/bge_m3.yaml
 
-unfreeze_last_n_layers: 2
+unfreeze_last_n_layers: 5
 
 training:
 
   batch_size: 8
 
-  epochs: 10
+  epochs: 15
 
   learning_rate: 0.0001
 
@@ -24,7 +24,7 @@ training:
 
 optimizer:
 
-  name: adamw
+  name: sgd
 
 device: cuda
 
