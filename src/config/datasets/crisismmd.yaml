@@ -1,0 +1,22 @@
+name: CrisisMMD
+
+train_csv: data/CrisisMMD_v2.0/csv_splits/train.csv
+val_csv: data/CrisisMMD_v2.0/csv_splits/dev.csv
+test_csv: data/CrisisMMD_v2.0/csv_splits/test.csv
+
+text_column: tweet_text
+
+image_column: image_file
+
+label_column: enc_label
+
+label_text_column: label
+
+class_names:
+  - not_informative
+  - informative
+
+
+max_length: 150
+
+num_classes: 2

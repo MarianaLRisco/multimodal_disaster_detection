@@ -1,0 +1,15 @@
+model_class: openaiModels
+
+model_import: model.multimodal.vision.openai
+
+hf_name: ViT-B-16
+
+pretrained: metaclip_400m
+
+embedding_dim: 512
+
+hidden_dim: 2048
+
+dropout: 0.3
+
+freeze: true

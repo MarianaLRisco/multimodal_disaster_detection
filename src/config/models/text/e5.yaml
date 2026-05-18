@@ -1,0 +1,19 @@
+model_class: E5
+
+model_import: model.multimodal.text.bge_m3
+
+hf_name: intfloat/multilingual-e5-base
+
+embedding_dim: 512
+
+hidden_dim: 768
+
+dropout: 0.3
+
+pooling: mean
+
+normalize_embeddings: true
+
+freeze: true
+
+

@@ -1,0 +1,37 @@
+experiment_name: convnext_base
+
+dataset_name: CrisisMMD
+
+dataset: src/config/datasets/crisismmd.yaml
+
+model_config: src/config/models/vision/convnext_base.yaml
+
+unfreeze_last_n_layers: 10
+
+training:
+
+  batch_size: 16
+
+  epochs: 10
+
+  learning_rate: 0.00005
+
+  num_workers: 2
+
+  weight_decay: 0.00001
+
+  shuffle: true
+
+optimizer:
+
+  name: adamw
+
+device: cuda
+
+modalities:
+
+  text: false
+
+  image: true
+
+output_dir: results/${dataset_name}/vision

@@ -1,0 +1,11 @@
+model_class: DinoV3
+
+model_import: model.multimodal.vision.dinov3
+
+hf_name: facebook/dinov3-vitb16-pretrain-lvd1689m
+
+hidden_dim: 1024
+
+dropout: 0.3
+
+freeze: true

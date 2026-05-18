@@ -1,0 +1,17 @@
+model_class: BGEM3
+
+model_import: model.multimodal.text.bge_m3
+
+hf_name: BAAI/bge-m3
+
+embedding_dim: 1024
+
+hidden_dim: 4096
+
+dropout: 0.2
+
+pooling: mean
+
+freeze: true
+
+
