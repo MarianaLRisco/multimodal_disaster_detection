@@ -117,7 +117,7 @@ class BGEM3(nn.Module):
 
     def get_tokenizer(self):
 
-        return { 'tokenizer': self.tokenizer}
+        return self.tokenizer
 
     def get_model(self):
 
