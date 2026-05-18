@@ -11,6 +11,7 @@ results/
 *.h5
 *.pt
 *.ckpt
+*.pyc
 # !results/**/**/*.png
-!results/**/**/*.json
-!results/**/**/*.yaml
+# !results/**/**/*.json
+# !results/**/**/*.yaml
