@@ -1,17 +1,28 @@
 data/
-results/
-*.pkl
+
+__pycache__/
+
 *.pkl
 *.csv
 *.zip
 *.tsv
 *.jpg
-*.png
 *.keras
 *.h5
-*.pt
 *.ckpt
 *.pyc
-# !results/**/**/*.png
-# !results/**/**/*.json
-# !results/**/**/*.yaml
+
+# Ignore ALL results
+results/*
+
+# Allow folders traversal
+!results/**/
+
+# Allow ONLY artifacts
+!results/**/*.png
+!results/**/*.json
+!results/**/*.yaml
+
+# ALWAYS ignore models
+*.pt
+results/**/*.pt
