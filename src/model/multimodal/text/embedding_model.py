@@ -12,7 +12,7 @@ from utils.pooling import (
     last_token_pooling
 )
 
-from src.utils.attn import (
+from utils.attn import (
     Attention
 )
 

@@ -14,7 +14,7 @@ training:
 
   epochs: 15
 
-  learning_rate: 0.0001
+  learning_rate: 0.00005
 
   num_workers: 2
 

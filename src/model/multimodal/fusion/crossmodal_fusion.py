@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-from src.utils.crossmodalAttn import (
+from utils.crossmodalAttn import (
     CrossModalAttention
 )
 
