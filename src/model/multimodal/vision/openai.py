@@ -94,12 +94,21 @@ class openaiModels(nn.Module):
             f"{trainable:,}/{total:,}"
         )
 
+    def get_embeddings(
+        self,
+        image
+    ):
+
+        embeddings = self.encoder(image)
+
+        return embeddings
+
     def forward(
         self,
         image
     ):
 
-        embeddings = self.encoder(
+        embeddings = self.get_embeddings(
             image
         )
 

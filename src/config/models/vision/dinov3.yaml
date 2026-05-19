@@ -5,7 +5,9 @@ model_import: model.multimodal.vision.dino
 hf_name: facebook/dinov3-vitl16-pretrain-lvd1689m
 # facebook/dinov3-vitb16-pretrain-lvd1689m
 
-hidden_dim: 1024
+embedding_dim: 1024
+
+hidden_dim: 4096
 
 dropout: 0.3
 

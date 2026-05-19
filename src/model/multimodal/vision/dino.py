@@ -59,10 +59,8 @@ class Dino(nn.Module):
 
                     param.requires_grad = True
 
-        # hidden size automatically
-        self.embedding_dim = (
-            self.encoder.config.hidden_size
-        )
+        # hidden size
+        self.embedding_dim = model_config["embedding_dim"]
 
         self.classifier = nn.Sequential(
 
@@ -103,7 +101,7 @@ class Dino(nn.Module):
             f"{trainable:,}/{total:,}"
         )
 
-    def forward(
+    def get_embeddings(
         self,
         image
     ):
@@ -115,6 +113,17 @@ class Dino(nn.Module):
         # CLS token
         embeddings = (
             outputs.last_hidden_state[:, 0]
+        )
+
+        return embeddings
+
+    def forward(
+        self,
+        image
+    ):
+
+        embeddings = self.get_embeddings(
+            image
         )
 
         logits = self.classifier(

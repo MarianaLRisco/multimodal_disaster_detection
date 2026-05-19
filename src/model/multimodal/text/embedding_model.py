@@ -12,6 +12,10 @@ from utils.pooling import (
     last_token_pooling
 )
 
+from src.utils.attn import (
+    Attention
+)
+
 
 class EmbeddingModel(nn.Module):
 
@@ -27,6 +31,10 @@ class EmbeddingModel(nn.Module):
         self.model_config = model_config
         self.dataset_config = dataset_config
         self.exp_config = exp_config
+        self.attention = model_config.get(
+            "attention",
+            False
+        )
 
         # TOKENIZER
 
@@ -92,6 +100,18 @@ class EmbeddingModel(nn.Module):
 
         self.embedding_dim = model_config["embedding_dim"]
 
+        #Attention
+        if self.attention:
+
+            self.attn = Attention(
+
+                feature_dim=self.embedding_dim,
+
+                attention_dim=model_config.get(
+                    "attention_dim",
+                    self.embedding_dim
+                )
+            )
 
         # CLASSIFIER
 
@@ -120,7 +140,7 @@ class EmbeddingModel(nn.Module):
 
        
 
-    def forward(
+    def get_embeddings(
         self,
         input_ids,
         attention_mask
@@ -131,51 +151,78 @@ class EmbeddingModel(nn.Module):
             attention_mask=attention_mask
         )
 
-        # POOLING
+        token_embeddings = (
+            outputs.last_hidden_state
+        )
 
-        if self.pooling == "mean":
+        # ATTENTION
 
-            embeddings = mean_pooling(
-                outputs,
-                attention_mask
+        if self.attention:
+
+            hidden = (
+                token_embeddings[:, 0]
             )
 
-        elif self.pooling == "cls":
-
-            embeddings = cls_pooling(
-                outputs
+            embeddings, attention_weights = (
+                self.attn(
+                    token_embeddings,
+                    hidden
+                )
             )
 
-        elif self.pooling == "last":
-
-            embeddings = last_token_pooling(
-                outputs,
-                attention_mask
-            )
+        # NORMAL POOLING
 
         else:
 
-            raise ValueError(
-                f"Unknown pooling: "
-                f"{self.pooling}"
-            )
+            if self.pooling == "mean":
 
-        # NORMALIZATION
+                embeddings = mean_pooling(
+                    outputs,
+                    attention_mask
+                )
+
+            elif self.pooling == "cls":
+
+                embeddings = cls_pooling(
+                    outputs
+                )
+
+            elif self.pooling == "last":
+
+                embeddings = last_token_pooling(
+                    outputs,
+                    attention_mask
+                )
+
+            else:
+
+                raise ValueError(
+                    f"Unknown pooling: {self.pooling}"
+                )
 
         if self.model_config.get(
             "normalize_embeddings",
             False
         ):
 
-            embeddings = (
-                torch.nn.functional.normalize(
-                    embeddings,
-                    p=2,
-                    dim=1
-                )
+            embeddings = torch.nn.functional.normalize(
+                embeddings,
+                p=2,
+                dim=1
             )
 
-        # CLASSIFICATION
+        return embeddings
+
+    def forward(
+        self,
+        input_ids,
+        attention_mask
+    ):
+
+        embeddings = self.get_embeddings(
+            input_ids,
+            attention_mask
+        )
 
         logits = self.classifier(
             embeddings

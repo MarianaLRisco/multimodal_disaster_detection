@@ -12,6 +12,10 @@ dropout: 0.2
 
 pooling: mean
 
+attention: true
+
+attention_dim: 256
+
 normalize_embeddings: true
 
 freeze: true
