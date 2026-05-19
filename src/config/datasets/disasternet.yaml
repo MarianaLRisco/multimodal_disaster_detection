@@ -1,0 +1,26 @@
+name: DisasterNet
+
+train_csv: data/disasterDataset/datasetDisaster/train_data.csv
+val_csv: data/disasterDataset/datasetDisaster/val_data.csv
+test_csv: data/disasterDataset/datasetDisaster/test_data.csv
+
+text_column: post_text
+
+image_column: image_path
+
+label_column: enc_label
+
+label_text_column: labels
+
+class_names:
+  - huaico
+  - lightning storm
+  - landslide
+  - flood
+  - drought
+  - frost hail
+  - forest fire
+
+max_length: 150
+
+num_classes: 7
