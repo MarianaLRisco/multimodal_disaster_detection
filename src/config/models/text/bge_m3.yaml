@@ -17,5 +17,3 @@ normalize_embeddings: false
 freeze: true
 
 trust_remote_code: false
-
-

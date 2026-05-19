@@ -6,7 +6,7 @@ dataset: src/config/datasets/crisismmd.yaml
 
 model_config: src/config/models/vision/vit_L_14.yaml
 
-unfreeze_last_n_layers: 5
+unfreeze_last_n_layers: 0
 
 training:
 

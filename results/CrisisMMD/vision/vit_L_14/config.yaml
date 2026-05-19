@@ -2,7 +2,7 @@ experiment_name: vit_L_14
 dataset_name: CrisisMMD
 dataset: src/config/datasets/crisismmd.yaml
 model_config: src/config/models/vision/vit_L_14.yaml
-unfreeze_last_n_layers: 5
+unfreeze_last_n_layers: 0
 training:
   batch_size: 16
   epochs: 15

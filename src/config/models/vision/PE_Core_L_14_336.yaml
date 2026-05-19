@@ -6,10 +6,10 @@ hf_name: PE-Core-L-14-336
 
 pretrained: meta
 
-embedding_dim: 768
+embedding_dim: 1024
 
 hidden_dim: 2048
 
-dropout: 0.5
+dropout: 0.3
 
 freeze: true

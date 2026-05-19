@@ -24,7 +24,7 @@ training:
 
 optimizer:
 
-  name: adamw
+  name: sgd
 
 device: cuda
 

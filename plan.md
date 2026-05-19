@@ -20,7 +20,6 @@ PE-Core-L-14-336
 
 Text:
 ModernBERT
-Gemma small
 Qwen3
 Jinav5
 BGE-M3

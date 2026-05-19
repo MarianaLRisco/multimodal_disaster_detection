@@ -25,7 +25,7 @@ from evaluation.callbacks.optimizer import (
 
 
 EXPERIMENT_PATH = (
-    "src/config/experiments/text/jinav5.yaml"
+    "src/config/experiments/vision/convnext_base.yaml"
 )
 
 with open(EXPERIMENT_PATH) as f:
