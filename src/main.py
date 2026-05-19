@@ -25,7 +25,7 @@ from evaluation.callbacks.optimizer import (
 
 
 EXPERIMENT_PATH = (
-    "src/config/experiments/vision/dinov3.yaml"
+    "src/config/experiments/text/jinav5.yaml"
 )
 
 with open(EXPERIMENT_PATH) as f:
@@ -64,7 +64,8 @@ ModelClass = getattr(
 
 model = ModelClass(
     model_config=model_config,
-    dataset_config=dataset_config
+    dataset_config=dataset_config,
+    exp_config=exp_config
 )
 
 model.to(device)
@@ -81,18 +82,19 @@ if exp_config["modalities"]["text"]:
     processors["text"] = TextProcessor()
 
 
-if exp_config["modalities"]["image"] and exp_config["experiment_name"].startswith("Dino"):
+if exp_config["modalities"]["image"]:
 
-    processors["image"] = (
-        model.get_image_processor()
-    )
+    if exp_config["experiment_name"].startswith("Dino"):
 
-else:
+        processors["image"] = (
+            model.get_image_processor()
+        )
 
-    processors["image"] = (
-        model.get_image_transform()
-    )
+    else:
 
+        processors["image"] = (
+            model.get_image_transform()
+        )
 
 train_loader = build_dataloader(
 

@@ -6,7 +6,7 @@ dataset: src/config/datasets/crisismmd.yaml
 
 model_config: src/config/models/text/e5.yaml
 
-unfreeze_last_n_layers: 10
+unfreeze_last_n_layers: 0
 
 training:
 

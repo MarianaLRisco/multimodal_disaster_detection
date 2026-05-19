@@ -2,7 +2,7 @@ experiment_name: bge_m3
 dataset_name: CrisisMMD
 dataset: src/config/datasets/crisismmd.yaml
 model_config: src/config/models/text/bge_m3.yaml
-unfreeze_last_n_layers: 5
+unfreeze_last_n_layers: 0
 training:
   batch_size: 8
   epochs: 15

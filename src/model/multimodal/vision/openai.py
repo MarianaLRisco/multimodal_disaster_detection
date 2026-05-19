@@ -9,14 +9,15 @@ class openaiModels(nn.Module):
     def __init__(
         self,
         model_config,
-        dataset_config
+        dataset_config,
+        exp_config
     ):
 
         super().__init__()
 
         self.model_config = model_config
-
         self.dataset_config = dataset_config
+        self.exp_config = exp_config
 
         self.encoder, _, self.image_transform = (
             open_clip.create_model_and_transforms(
@@ -41,7 +42,7 @@ class openaiModels(nn.Module):
 
                 param.requires_grad = False
 
-        n_layers = model_config.get(
+        n_layers = exp_config.get(
             "unfreeze_last_n_layers",
             0
         )

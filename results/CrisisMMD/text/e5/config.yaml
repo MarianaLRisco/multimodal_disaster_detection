@@ -2,7 +2,7 @@ experiment_name: e5
 dataset_name: CrisisMMD
 dataset: src/config/datasets/crisismmd.yaml
 model_config: src/config/models/text/e5.yaml
-unfreeze_last_n_layers: 10
+unfreeze_last_n_layers: 0
 training:
   batch_size: 16
   epochs: 15

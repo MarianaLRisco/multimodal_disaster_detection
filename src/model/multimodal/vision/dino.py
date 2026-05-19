@@ -12,13 +12,15 @@ class Dino(nn.Module):
     def __init__(
         self,
         model_config,
-        dataset_config
+        dataset_config,
+        exp_config
     ):
 
         super().__init__()
 
         self.model_config = model_config
         self.dataset_config = dataset_config
+        self.exp_config = exp_config
 
         self.processor = (
             AutoImageProcessor.from_pretrained(
@@ -40,7 +42,7 @@ class Dino(nn.Module):
                 param.requires_grad = False
 
         # unfreeze last n layers
-        n_layers = model_config.get(
+        n_layers = exp_config.get(
             "unfreeze_last_n_layers",
             0
         )
