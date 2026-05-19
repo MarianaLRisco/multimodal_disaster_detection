@@ -1,3 +1,5 @@
+from platform import processor
+
 import pandas as pd
 
 from PIL import Image
@@ -93,7 +95,20 @@ class BaseDataset(Dataset):
 
                 if processor is not None:
 
-                    image = processor(image)
+                    # HuggingFace processor
+                    if hasattr(processor, "__class__") and (
+                        "ImageProcessor" in processor.__class__.__name__
+                    ):
+
+                        image = processor(
+                            images=image,
+                            return_tensors="pt"
+                        )["pixel_values"].squeeze(0)
+
+                    # torchvision transforms
+                    else:
+
+                        image = processor(image)   
 
             sample["image"] = image
 

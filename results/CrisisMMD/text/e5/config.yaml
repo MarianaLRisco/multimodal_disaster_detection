@@ -1,37 +1,19 @@
 experiment_name: e5
-
 dataset_name: CrisisMMD
-
 dataset: src/config/datasets/crisismmd.yaml
-
 model_config: src/config/models/text/e5.yaml
-
 unfreeze_last_n_layers: 10
-
 training:
-
   batch_size: 16
-
   epochs: 15
-
   learning_rate: 0.0001
-
   num_workers: 2
-
-  weight_decay: 0.00001
-
+  weight_decay: 1.0e-05
   shuffle: true
-
 optimizer:
-
   name: sgd
-
 device: cuda
-
 modalities:
-
   text: true
-
   image: false
-
 output_dir: results/${dataset_name}/text

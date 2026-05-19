@@ -25,7 +25,7 @@ from evaluation.callbacks.optimizer import (
 
 
 EXPERIMENT_PATH = (
-    "src/config/experiments/vision/convnext_base.yaml"
+    "src/config/experiments/vision/dinov3.yaml"
 )
 
 with open(EXPERIMENT_PATH) as f:
@@ -81,7 +81,13 @@ if exp_config["modalities"]["text"]:
     processors["text"] = TextProcessor()
 
 
-if exp_config["modalities"]["image"]:
+if exp_config["modalities"]["image"] and exp_config["experiment_name"].startswith("Dino"):
+
+    processors["image"] = (
+        model.get_image_processor()
+    )
+
+else:
 
     processors["image"] = (
         model.get_image_transform()

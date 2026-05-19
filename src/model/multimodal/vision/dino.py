@@ -7,7 +7,7 @@ from transformers import (
 )
 
 
-class Dinov3(nn.Module):
+class Dino(nn.Module):
 
     def __init__(
         self,
