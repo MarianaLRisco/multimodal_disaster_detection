@@ -25,7 +25,9 @@ from evaluation.callbacks.optimizer import (
 
 
 EXPERIMENT_PATH = (
-    "src/config/experiments/text/bge_m3.yaml"
+
+    "src/config/experiments/text/e5.yaml"
+
 )
 
 with open(EXPERIMENT_PATH) as f:

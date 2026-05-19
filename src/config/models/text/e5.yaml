@@ -1,6 +1,6 @@
 model_class: EmbeddingModel
 
-model_import: model.multimodal.text.EmbeddingModel
+model_import: model.multimodal.text.embedding_model
 
 hf_name: intfloat/multilingual-e5-base
 
