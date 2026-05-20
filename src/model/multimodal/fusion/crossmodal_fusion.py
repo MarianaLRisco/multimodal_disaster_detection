@@ -124,15 +124,8 @@ class CrossModalModel(nn.Module):
                         param.requires_grad = True
 
         # ORIGINAL DIMENSIONS
-
-
-        self.text_dim = (
-            text_model.embedding_dim
-        )
-
-        self.image_dim = (
-            image_model.embedding_dim
-        )
+        self.text_dim = text_config["embedding_dim"]
+        self.image_dim = image_config["embedding_dim"]
 
         # ====================================
         # COMMON PROJECTION DIM

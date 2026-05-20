@@ -25,7 +25,6 @@ from evaluation.callbacks.optimizer import (
 
 
 EXPERIMENT_PATH = (
-
     "src/config/experiments/multimodal/e5_convnext.yaml"
 
 )
@@ -79,24 +78,23 @@ processors = {}
 
 
 if exp_config["modalities"]["text"]:
-
-    tokenizer = model.get_tokenizer()
+    if hasattr(model, "text_model"):
+        tokenizer = model.text_model.get_tokenizer()
+    else:
+        tokenizer = model.get_tokenizer()
     processors["text"] = TextProcessor()
 
 
 if exp_config["modalities"]["image"]:
+    if hasattr(model, "image_model"):
 
-    if exp_config["experiment_name"].startswith("Dino"):
-
-        processors["image"] = (
-            model.get_image_processor()
-        )
+        if exp_config["experiment_name"].startswith("Dino"):
+            processors["image"] = model.image_model.get_image_processor()
+        else:
+            processors["image"] = model.image_model.get_image_transform()
 
     else:
-
-        processors["image"] = (
-            model.get_image_transform()
-        )
+        processors["image"] = model.get_image_transform()
 
 train_loader = build_dataloader(
 

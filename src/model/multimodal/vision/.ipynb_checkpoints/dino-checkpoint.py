@@ -1,10 +1,13 @@
 import torch
 import torch.nn as nn
 
-import open_clip
+from transformers import (
+    AutoImageProcessor,
+    AutoModel
+)
 
 
-class openaiModels(nn.Module):
+class Dino(nn.Module):
 
     def __init__(
         self,
@@ -19,29 +22,26 @@ class openaiModels(nn.Module):
         self.dataset_config = dataset_config
         self.exp_config = exp_config
 
-        self.encoder, _, self.image_transform = (
-            open_clip.create_model_and_transforms(
-
-                model_name=model_config[
-                    "hf_name"
-                ],
-
-                pretrained=model_config[
-                    "pretrained"
-                ]
+        self.processor = (
+            AutoImageProcessor.from_pretrained(
+                model_config["hf_name"]
             )
         )
 
         self.encoder = (
-            self.encoder.visual
+            AutoModel.from_pretrained(
+                model_config["hf_name"]
+            )
         )
 
+        # freeze encoder
         if model_config["freeze"]:
 
             for param in self.encoder.parameters():
 
                 param.requires_grad = False
 
+        # unfreeze last n layers
         n_layers = exp_config.get(
             "unfreeze_last_n_layers",
             0
@@ -49,16 +49,17 @@ class openaiModels(nn.Module):
 
         if n_layers > 0:
 
-            children = list(
-                self.encoder.children()
+            transformer_layers = (
+                self.encoder.model.layer
             )
 
-            for layer in children[-n_layers:]:
+            for layer in transformer_layers[-n_layers:]:
 
                 for param in layer.parameters():
 
                     param.requires_grad = True
-                    
+
+        # hidden size
         self.embedding_dim = model_config["embedding_dim"]
 
         self.classifier = nn.Sequential(
@@ -72,6 +73,10 @@ class openaiModels(nn.Module):
 
             nn.Dropout(
                 model_config["dropout"]
+            ),
+
+            nn.LayerNorm(
+                model_config["hidden_dim"]
             ),
 
             nn.Linear(
@@ -101,7 +106,14 @@ class openaiModels(nn.Module):
         image
     ):
 
-        embeddings = self.encoder(image)
+        outputs = self.encoder(
+            pixel_values=image
+        )
+
+        # CLS token
+        embeddings = (
+            outputs.last_hidden_state[:, 0]
+        )
 
         return embeddings
 
@@ -120,6 +132,6 @@ class openaiModels(nn.Module):
 
         return logits
 
-    def get_image_transform(self):
+    def get_image_processor(self):
 
-        return self.image_transform
+        return self.processor
