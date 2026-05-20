@@ -1,0 +1,23 @@
+model_class: EmbeddingModel
+
+model_import: model.multimodal.text.embedding_model
+
+hf_name: intfloat/multilingual-e5-base
+
+embedding_dim: 768 #512
+
+hidden_dim: 768
+
+dropout: 0.3
+
+pooling: mean
+
+attention: true
+
+attention_dim: 256
+
+normalize_embeddings: true
+
+freeze: true
+
+trust_remote_code: false
