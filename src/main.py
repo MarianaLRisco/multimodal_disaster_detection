@@ -26,7 +26,7 @@ from evaluation.callbacks.optimizer import (
 
 EXPERIMENT_PATH = (
 
-    "src/config/experiments/text/e5.yaml"
+    "src/config/experiments/vision/vit_B_16.yaml"
 
 )
 

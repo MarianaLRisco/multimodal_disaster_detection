@@ -1,8 +1,8 @@
 experiment_name: DinoV3
 
-dataset_name: CrisisMMD
+dataset_name: DisasterNet
 
-dataset: src/config/datasets/crisismmd.yaml
+dataset: src/config/datasets/disasternet.yaml
 
 model_config: src/config/models/vision/dinov3.yaml
 
@@ -10,7 +10,7 @@ unfreeze_last_n_layers: 0
 
 training:
 
-  batch_size: 16
+  batch_size: 32
 
   epochs: 15
 
@@ -18,13 +18,13 @@ training:
 
   num_workers: 2
 
-  weight_decay: 0.01
+  weight_decay: 0.00001
 
   shuffle: true
 
 optimizer:
 
-  name: sgd
+  name: adamw
 
 device: cuda
 

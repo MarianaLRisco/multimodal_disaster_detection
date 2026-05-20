@@ -50,7 +50,7 @@ class Dino(nn.Module):
         if n_layers > 0:
 
             transformer_layers = (
-                self.encoder.encoder.layer
+                self.encoder.model.layer
             )
 
             for layer in transformer_layers[-n_layers:]:
