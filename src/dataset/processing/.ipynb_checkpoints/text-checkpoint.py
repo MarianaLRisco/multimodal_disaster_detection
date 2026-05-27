@@ -34,9 +34,6 @@ class TextProcessor:
         text_clean = self.clean_text(text)
 
         if self.augmenter is not None:
-            if len(text.split()) < 5:
-                return text
-            else:
-                text = self.augmenter(text_clean)
+            text = self.augmenter(text_clean)
 
         return text

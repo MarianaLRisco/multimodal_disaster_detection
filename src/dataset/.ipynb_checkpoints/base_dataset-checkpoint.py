@@ -47,19 +47,29 @@ class BaseDataset(Dataset):
                 row[self.config["text_column"]]
             )
 
-            if self.split == "train":
-                text_processor = self.processors.get("text_train", None)
-            else:
-                text_processor = self.processors.get("text_eval", None)
-        
-            if text_processor is not None:
-                text = text_processor(text)
-        
+            if "text" in self.processors:
+
+                if split == "train":
+                    text_processor = self.processors["text_train"]
+                else:
+                    text_processor = self.processors["text_eval"]
+
+                if processor is not None:
+
+                    text = text_processor(text)
+
             encoded = self.tokenizer(
+
                 text,
+
                 padding="max_length",
+
                 truncation=True,
-                max_length=self.config["max_length"],
+
+                max_length=self.config[
+                    "max_length"
+                ],
+
                 return_tensors="pt"
             )
 
