@@ -1,0 +1,73 @@
+experiment_name: bge_ViT_crossmodal_lora
+
+dataset_name: CrisisMMD #  DisasterNet
+
+dataset: src/config/datasets/crisismmd.yaml
+
+text_model_config: src/config/models/text/bge_m3.yaml
+
+image_model_config: src/config/models/vision/vit_L_14.yaml
+
+model_config: src/config/models/multimodal/crossmm.yaml
+
+unfreeze_last_n_layers: 2
+
+use_lora: true
+
+load_best_model: true
+
+loss: "ce"
+
+training:
+
+  batch_size: 64 #16
+
+  epochs: 30
+
+  learning_rate: 4.0e-6
+
+  num_workers: 2
+
+  weight_decay: 1.0e-2
+
+  shuffle: true
+
+scheduler: 
+
+  name: cosine_warmup
+  
+  warmup_ratio: 0.2
+
+lora:
+
+  text: true
+
+  vision: true
+
+  r: 8
+
+  alpha: 16
+
+  dropout: 0.05
+
+  last_n_text_layers: 4
+  
+  last_n_vision_layers: 2
+
+  target_modules: ["attn.out_proj","mlp.c_fc","mlp.c_proj"]
+
+optimizer:
+
+  name: adamw
+
+device: cuda
+
+multi_gpu: true
+
+modalities:
+
+  text: true
+
+  image: true
+
+output_dir: results/${dataset_name}/multimodal

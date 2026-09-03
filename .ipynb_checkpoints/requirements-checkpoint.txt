@@ -1,10 +1,11 @@
 numpy<2
 
-torch==2.1.2
-torchvision==0.16.2
-torchaudio==2.1.2
+torch==2.6.0
+torchvision==0.21.0
+torchaudio==2.6.0
 
-transformers==4.38.2
+transformers>=4.57.0
+peft>=0.15.2
 
 pandas==2.2.2
 pillow
@@ -13,11 +14,12 @@ scikit-learn
 tqdm
 
 sentencepiece
-accelerate==0.27.2
+accelerate>=1.8.1
 
 timm
 einops
 open_clip_torch
-peft==0.8.2
 
 matplotlib
+
+deep-translator

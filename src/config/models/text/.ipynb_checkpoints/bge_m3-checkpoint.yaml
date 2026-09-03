@@ -1,0 +1,23 @@
+model_class: EmbeddingModel
+
+model_import: model.multimodal.text.embedding_model
+
+hf_name: BAAI/bge-m3
+
+embedding_dim: 1024
+
+hidden_dim: 4096
+
+dropout: 0.2
+
+pooling: mean
+
+attention: true
+
+attention_dim: 256
+
+normalize_embeddings: false
+
+freeze: true
+
+trust_remote_code: false

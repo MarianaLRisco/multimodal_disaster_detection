@@ -1,0 +1,11 @@
+model_class: CrossModalTransformerModel
+
+model_import: model.multimodal.fusion.crossmodal_transformer
+
+projection_dim: 512
+
+cross_hidden_dim: 256
+
+classifier_hidden_dim: 128
+
+dropout: 0.1

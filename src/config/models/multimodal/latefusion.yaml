@@ -1,0 +1,7 @@
+model_class: LateFusion
+
+model_import: model.multimodal.fusion.late_fusion
+
+classifier_hidden_dim: 128
+
+dropout: 0.2

@@ -1,0 +1,19 @@
+experiment_name: e5
+dataset_name: DamageDataset
+dataset: src/config/datasets/damage.yaml
+model_config: src/config/models/text/e5.yaml
+unfreeze_last_n_layers: 0
+training:
+  batch_size: 32
+  epochs: 15
+  learning_rate: 1.0e-05
+  num_workers: 2
+  weight_decay: 0.001
+  shuffle: true
+optimizer:
+  name: adamw
+device: cuda
+modalities:
+  text: true
+  image: false
+output_dir: results/${dataset_name}/text

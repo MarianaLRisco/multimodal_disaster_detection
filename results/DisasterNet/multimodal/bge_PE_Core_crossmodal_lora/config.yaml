@@ -1,0 +1,31 @@
+experiment_name: bge_PE_Core_crossmodal_lora
+dataset_name: DisasterNet
+dataset: src/config/datasets/disasternet.yaml
+text_model_config: src/config/models/text/bge_m3.yaml
+image_model_config: src/config/models/vision/PE_Core_L_14_336.yaml
+model_config: src/config/models/multimodal/crossmm.yaml
+unfreeze_last_n_layers: 3
+training:
+  batch_size: 16
+  epochs: 10
+  learning_rate: 5.0e-06
+  num_workers: 2
+  weight_decay: 0.001
+  shuffle: true
+use_lora: true
+lora:
+  text: true
+  vision: true
+  r: 8
+  alpha: 16
+  dropout: 0.1
+  target_modules:
+  - attn.qkv
+  - attn.proj
+optimizer:
+  name: adamw
+device: cuda
+modalities:
+  text: true
+  image: true
+output_dir: results/${dataset_name}/multimodal

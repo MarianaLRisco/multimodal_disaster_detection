@@ -40,7 +40,12 @@ class EmbeddingModel(nn.Module):
 
         self.tokenizer = (
             AutoTokenizer.from_pretrained(
-                model_config["hf_name"]
+                model_config["hf_name"],
+                trust_remote_code=model_config.get(
+                    "trust_remote_code",
+                    False
+                ),
+                use_fast=False
             )
         )
 
@@ -52,7 +57,8 @@ class EmbeddingModel(nn.Module):
                 trust_remote_code=model_config.get(
                     "trust_remote_code",
                     False
-                )
+                ),
+                dtype=torch.bfloat16,  
             )
         )
 
@@ -153,7 +159,7 @@ class EmbeddingModel(nn.Module):
 
         token_embeddings = (
             outputs.last_hidden_state
-        )
+        ).float()
 
         # ATTENTION
 
@@ -210,6 +216,11 @@ class EmbeddingModel(nn.Module):
                 p=2,
                 dim=1
             )
+        if self.model_config.get(
+            "float",
+            False
+        ):
+            embeddings = embeddings.float()
 
         return embeddings
 

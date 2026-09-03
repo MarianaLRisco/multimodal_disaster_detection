@@ -1,0 +1,19 @@
+experiment_name: vit_L_14
+dataset_name: DisasterNet
+dataset: src/config/datasets/disasternet.yaml
+model_config: src/config/models/vision/vit_L_14.yaml
+unfreeze_last_n_layers: 0
+training:
+  batch_size: 32
+  epochs: 15
+  learning_rate: 5.0e-05
+  num_workers: 2
+  weight_decay: 1.0e-05
+  shuffle: true
+optimizer:
+  name: adamw
+device: cuda
+modalities:
+  text: false
+  image: true
+output_dir: results/${dataset_name}/vision

@@ -1,0 +1,23 @@
+model_class: EmbeddingDecoder
+
+model_import: model.multimodal.text.embedding_decoder
+
+hf_name: Qwen/Qwen2-72B
+
+embedding_dim: 2560
+
+hidden_dim: 2048
+
+dropout: 0.4
+
+pooling: mean
+
+attention: true
+
+attention_dim: 256
+
+normalize_embeddings: true
+
+freeze: true
+
+trust_remote_code: true

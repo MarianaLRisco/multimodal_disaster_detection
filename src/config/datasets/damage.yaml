@@ -1,0 +1,26 @@
+name: DamageDataset
+
+train_csv: data/damage_dataset/train_data.csv
+val_csv: data/damage_dataset/val_data.csv
+test_csv: data/damage_dataset/test_data.csv
+
+text_column: post_text
+image_column: image_path
+label_column: enc_label
+
+# Si tu pipeline usa nombres de clases (opcional pero recomendable)
+label_text_column: label
+
+text_augmentation: false 
+
+class_names:
+  - non_damage
+  - damaged_infrastructure
+  - damaged_nature
+  - flood
+  - fires
+  - human_damage
+
+num_classes: 6
+
+max_length: 120

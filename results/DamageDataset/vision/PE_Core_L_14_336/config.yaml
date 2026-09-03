@@ -1,0 +1,19 @@
+experiment_name: PE_Core_L_14_336
+dataset_name: DamageDataset
+dataset: src/config/datasets/damage.yaml
+model_config: src/config/models/vision/PE_Core_L_14_336.yaml
+unfreeze_last_n_layers: 0
+training:
+  batch_size: 16
+  epochs: 15
+  learning_rate: 0.0005
+  num_workers: 2
+  weight_decay: 0.001
+  shuffle: true
+optimizer:
+  name: sgd
+device: cuda
+modalities:
+  text: false
+  image: true
+output_dir: results/${dataset_name}/vision

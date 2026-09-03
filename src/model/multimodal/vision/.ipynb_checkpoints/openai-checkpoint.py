@@ -123,3 +123,74 @@ class openaiModels(nn.Module):
     def get_image_transform(self):
 
         return self.image_transform
+    
+    def get_patch_tokens(
+        self,
+        image,
+        return_cls=False
+    ):
+
+        encoder = self.encoder
+
+        if hasattr(encoder, "transformer"):
+
+            x = encoder.conv1(image)
+
+            x = x.reshape(
+                x.shape[0],
+                x.shape[1],
+                -1
+            )
+
+            x = x.permute(0, 2, 1)
+
+            cls_token = encoder.class_embedding.to(
+                x.dtype
+            )
+
+            cls_tokens = cls_token.unsqueeze(0).unsqueeze(0)
+
+            cls_tokens = cls_tokens.expand(
+                x.shape[0],
+                -1,
+                -1
+            )
+
+            x = torch.cat(
+                [cls_tokens, x],
+                dim=1
+            )
+
+            x = x + encoder.positional_embedding.to(
+                x.dtype
+            )
+
+            x = encoder.patch_dropout(x)
+
+            x = encoder.ln_pre(x)
+
+            x = x.permute(1, 0, 2)
+
+            x = encoder.transformer(x)
+
+            x = x.permute(1, 0, 2)
+
+            if hasattr(encoder, "ln_post"):
+
+                x = encoder.ln_post(x)
+
+            cls_embedding = x[:, 0, :]
+
+            patch_tokens = x[:, 1:, :]
+
+            if return_cls:
+
+                return cls_embedding, patch_tokens
+
+            return patch_tokens
+
+        else:
+
+            raise ValueError(
+                "Backbone does not support patch extraction"
+            )

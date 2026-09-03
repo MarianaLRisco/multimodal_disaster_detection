@@ -6,6 +6,6 @@ projection_dim: 512
 
 cross_hidden_dim: 256
 
-classifier_hidden_dim: 1024
+classifier_hidden_dim: 256
 
-dropout: 0.3
+dropout: 0.4

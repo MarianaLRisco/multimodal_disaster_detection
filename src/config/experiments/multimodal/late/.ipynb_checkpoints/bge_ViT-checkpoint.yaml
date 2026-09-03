@@ -1,0 +1,55 @@
+experiment_name: BGE_ViT_L_14_latefusion
+
+dataset_name: CrisisMMD
+
+dataset: src/config/datasets/crisismmd.yaml
+
+text_model_config: src/config/models/text/bge_m3.yaml
+
+image_model_config: src/config/models/vision/vit_L_14.yaml
+
+model_config: src/config/models/multimodal/latefusion.yaml
+
+unfreeze_last_n_layers: 0
+
+use_lora: true
+
+training:
+
+  batch_size: 16
+
+  epochs: 15
+
+  learning_rate: 1.0e-6
+
+  num_workers: 2
+
+  weight_decay: 5.0e-2
+
+  shuffle: true
+
+lora:
+
+  text: true
+
+  vision: true
+
+  r: 8
+
+  alpha: 16
+
+  dropout: 0.1
+
+optimizer:
+
+  name: adamw
+
+device: cuda
+
+modalities:
+
+  text: true
+
+  image: true
+
+output_dir: results/${dataset_name}/multimodal

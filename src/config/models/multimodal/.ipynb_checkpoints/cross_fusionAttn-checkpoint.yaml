@@ -1,0 +1,11 @@
+model_class: CrossModel
+
+model_import: model.multimodal.fusion.cross_fusionAttn
+
+projection_dim: 512
+
+hidden_dim: 128
+
+classifier_hidden_dim: 64
+
+dropout: 0.4

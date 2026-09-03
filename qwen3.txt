@@ -1,0 +1,4 @@
+peft==0.15.1
+transformers==4.51.3
+torch==2.6.0+cu124
+tokenizers==0.21.1

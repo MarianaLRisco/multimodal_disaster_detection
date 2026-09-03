@@ -1,0 +1,72 @@
+experiment_name: BGE_ConvNext_crossAttn
+
+dataset_name:  CrisisMMD #DamageDataset
+ 
+dataset: src/config/datasets/crisismmd.yaml
+
+text_model_config: src/config/models/text/bge_m3.yaml
+
+image_model_config: src/config/models/vision/convnext_base.yaml
+
+model_config: src/config/models/multimodal/cross_fusionAttn.yaml
+
+unfreeze_last_n_layers: 2
+
+use_lora: true
+
+load_best_model: false
+
+training:
+
+  batch_size: 64
+
+  epochs: 50
+
+  learning_rate: 5.0e-6 #4.0e-7
+
+  num_workers: 2
+
+  weight_decay: 5.0e-2
+
+  shuffle: true
+
+scheduler:
+
+  name: cosine_warmup
+  
+  warmup_ratio: 0.2
+
+
+lora:
+
+  text: true
+
+  vision: true
+
+  r: 8
+
+  alpha: 16
+
+  dropout: 0.1
+
+  target_modules: ["mlp.fc1","mlp.fc2"]
+
+  last_n_text_layers: 2
+  last_n_vision_layers: 0
+
+
+optimizer:
+
+  name: adamw
+
+device: cuda
+
+multi_gpu: true
+
+modalities:
+
+  text: true
+
+  image: true
+
+output_dir: results/${dataset_name}/multimodal

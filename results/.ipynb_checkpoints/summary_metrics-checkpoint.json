@@ -1,0 +1,200 @@
+{
+    "experiments": [
+        {
+            "dataset": "CrisisMMD",
+            "modality": "text",
+            "model": "bge_m3",
+            "experiment": "test_metrics.json",
+            "path": "results/CrisisMMD/text/bge_m3/test_metrics.json",
+            "metrics": {
+                "accuracy": 0.7487706750111757,
+                "precision": 0.7560610621188153,
+                "recall": 0.7022293369480187,
+                "f1": 0.7103202253300964,
+                "loss": 0.5317332065531186
+            }
+        },
+        {
+            "dataset": "CrisisMMD",
+            "modality": "text",
+            "model": "e5",
+            "experiment": "test_metrics.json",
+            "path": "results/CrisisMMD/text/e5/test_metrics.json",
+            "metrics": {
+                "accuracy": 0.7299955297273134,
+                "precision": 0.7330411121920712,
+                "recall": 0.6809273084081897,
+                "f1": 0.687011689794224,
+                "loss": 0.5405175775289536
+            }
+        },
+        {
+            "dataset": "CrisisMMD",
+            "modality": "text",
+            "model": "jinav5",
+            "experiment": "test_metrics.json",
+            "path": "results/CrisisMMD/text/jinav5/test_metrics.json",
+            "metrics": {
+                "accuracy": 0.7268663388466696,
+                "precision": 0.7193761786600497,
+                "recall": 0.6863160388174044,
+                "f1": 0.6924836854971073,
+                "loss": 0.5490845905882972
+            }
+        },
+        {
+            "dataset": "CrisisMMD",
+            "modality": "vision",
+            "model": "DinoV3",
+            "experiment": "test_metrics.json",
+            "path": "results/CrisisMMD/vision/DinoV3/test_metrics.json",
+            "metrics": {
+                "accuracy": 0.7130084935181046,
+                "precision": 0.7018164577592083,
+                "recall": 0.6722379015942381,
+                "f1": 0.6774224414436268,
+                "loss": 0.5493648243801934
+            }
+        },
+        {
+            "dataset": "CrisisMMD",
+            "modality": "vision",
+            "model": "PE_Core_L_14_336",
+            "experiment": "test_metrics.json",
+            "path": "results/CrisisMMD/vision/PE_Core_L_14_336/test_metrics.json",
+            "metrics": {
+                "accuracy": 0.7872150201162271,
+                "precision": 0.7764854315510734,
+                "recall": 0.771091705780799,
+                "f1": 0.7734716315134682,
+                "loss": 0.46584431411964555
+            }
+        },
+        {
+            "dataset": "CrisisMMD",
+            "modality": "vision",
+            "model": "convnext_base",
+            "experiment": "test_metrics.json",
+            "path": "results/CrisisMMD/vision/convnext_base/test_metrics.json",
+            "metrics": {
+                "accuracy": 0.7822977201609298,
+                "precision": 0.7712255792508791,
+                "recall": 0.7657986532599607,
+                "f1": 0.7681823356488451,
+                "loss": 0.4741542153060436
+            }
+        },
+        {
+            "dataset": "CrisisMMD",
+            "modality": "vision",
+            "model": "vit_B_16",
+            "experiment": "test_metrics.json",
+            "path": "results/CrisisMMD/vision/vit_B_16/test_metrics.json",
+            "metrics": {
+                "accuracy": 0.7603933839964238,
+                "precision": 0.7491315433033224,
+                "recall": 0.7372276341344987,
+                "f1": 0.7416191149344045,
+                "loss": 0.5087103219968933
+            }
+        },
+        {
+            "dataset": "CrisisMMD",
+            "modality": "vision",
+            "model": "vit_L_14",
+            "experiment": "test_metrics.json",
+            "path": "results/CrisisMMD/vision/vit_L_14/test_metrics.json",
+            "metrics": {
+                "accuracy": 0.7831917746982566,
+                "precision": 0.7718651563189378,
+                "recall": 0.7680287488872704,
+                "f1": 0.769776315211512,
+                "loss": 0.47750332557729314
+            }
+        },
+        {
+            "dataset": "DisasterNet",
+            "modality": "text",
+            "model": "bge_m3",
+            "experiment": "test_metrics.json",
+            "path": "results/DisasterNet/text/bge_m3/test_metrics.json",
+            "metrics": {
+                "accuracy": 0.8903566710700133,
+                "precision": 0.8931248829533015,
+                "recall": 0.8950168030749168,
+                "f1": 0.8939108983673372,
+                "loss": 0.605958077746133
+            }
+        },
+        {
+            "dataset": "DisasterNet",
+            "modality": "text",
+            "model": "e5",
+            "experiment": "test_metrics.json",
+            "path": "results/DisasterNet/text/e5/test_metrics.json",
+            "metrics": {
+                "accuracy": 0.8546895640686922,
+                "precision": 0.8702770568865918,
+                "recall": 0.8543434379385972,
+                "f1": 0.8602085034720754,
+                "loss": 0.48212991530696553
+            }
+        },
+        {
+            "dataset": "DisasterNet",
+            "modality": "vision",
+            "model": "DinoV3",
+            "experiment": "test_metrics.json",
+            "path": "results/DisasterNet/vision/DinoV3/test_metrics.json",
+            "metrics": {
+                "accuracy": 0.9062087186261559,
+                "precision": 0.9122030008257438,
+                "recall": 0.9142333430985036,
+                "f1": 0.9130049817289583,
+                "loss": 0.26988636671255034
+            }
+        },
+        {
+            "dataset": "DisasterNet",
+            "modality": "vision",
+            "model": "PE_Core_L_14_336",
+            "experiment": "test_metrics.json",
+            "path": "results/DisasterNet/vision/PE_Core_L_14_336/test_metrics.json",
+            "metrics": {
+                "accuracy": 0.8058124174372523,
+                "precision": 0.8590303689594176,
+                "recall": 0.7972131973934417,
+                "f1": 0.8149522069470144,
+                "loss": 1.1488891194264095
+            }
+        },
+        {
+            "dataset": "DisasterNet",
+            "modality": "vision",
+            "model": "convnext_base",
+            "experiment": "test_metrics.json",
+            "path": "results/DisasterNet/vision/convnext_base/test_metrics.json",
+            "metrics": {
+                "accuracy": 0.8824306472919419,
+                "precision": 0.9004288280789092,
+                "recall": 0.888685528609475,
+                "f1": 0.8927606856545841,
+                "loss": 0.32381992414593697
+            }
+        },
+        {
+            "dataset": "DisasterNet",
+            "modality": "vision",
+            "model": "vit_B_16",
+            "experiment": "test_metrics.json",
+            "path": "results/DisasterNet/vision/vit_B_16/test_metrics.json",
+            "metrics": {
+                "accuracy": 0.39762219286657857,
+                "precision": 0.304495495870508,
+                "recall": 0.3258376533850836,
+                "f1": 0.266923844744717,
+                "loss": 1.7743019635478656
+            }
+        }
+    ]
+}

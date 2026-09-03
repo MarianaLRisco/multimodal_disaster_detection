@@ -6,7 +6,7 @@ hf_name: convnext_base_w
 
 pretrained: laion2b_s13b_b82k
 
-embedding_dim: 640
+embedding_dim: 640 #1024
 
 hidden_dim: 2048
 
